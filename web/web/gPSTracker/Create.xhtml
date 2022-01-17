@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GPSTrackerCreateDlg" widgetVar="GPSTrackerCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGPSTrackerTitle}">
+            <h:form id="GPSTrackerCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gPSTrackerController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGPSTrackerLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{gPSTrackerController.selected.id}" title="#{bundle.CreateGPSTrackerTitle_id}" required="true" requiredMessage="#{bundle.CreateGPSTrackerRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateGPSTrackerLabel_simNumber}" for="simNumber" />
+                        <p:inputText id="simNumber" value="#{gPSTrackerController.selected.simNumber}" title="#{bundle.CreateGPSTrackerTitle_simNumber}" />
+                        <p:outputLabel value="#{bundle.CreateGPSTrackerLabel_idPosition}" for="idPosition" />
+                        <p:selectOneMenu id="idPosition" value="#{gPSTrackerController.selected.idPosition}" >
+                            <f:selectItems value="#{positionController.itemsAvailableSelectOne}"
+                                           var="idPositionItem"
+                                           itemValue="#{idPositionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{gPSTrackerController.create}" value="#{bundle.Save}" update="display,:GPSTrackerListForm:datalist,:growl" oncomplete="handleSubmit(args,'GPSTrackerCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GPSTrackerCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

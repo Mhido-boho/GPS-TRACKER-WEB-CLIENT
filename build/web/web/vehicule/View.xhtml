@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VehiculeViewDlg" widgetVar="VehiculeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVehiculeTitle}">
+            <h:form id="VehiculeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vehiculeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVehiculeLabel_id}"/>
+                        <h:outputText value="#{vehiculeController.selected.id}" title="#{bundle.ViewVehiculeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewVehiculeLabel_marque}"/>
+                        <h:outputText value="#{vehiculeController.selected.marque}" title="#{bundle.ViewVehiculeTitle_marque}"/>
+                        <h:outputText value="#{bundle.ViewVehiculeLabel_matricule}"/>
+                        <h:outputText value="#{vehiculeController.selected.matricule}" title="#{bundle.ViewVehiculeTitle_matricule}"/>
+                        <h:outputText value="#{bundle.ViewVehiculeLabel_type}"/>
+                        <h:outputText value="#{vehiculeController.selected.type}" title="#{bundle.ViewVehiculeTitle_type}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VehiculeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

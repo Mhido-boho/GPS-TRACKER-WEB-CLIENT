@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VehiculeGPSTrackerViewDlg" widgetVar="VehiculeGPSTrackerViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVehiculeGPSTrackerTitle}">
+            <h:form id="VehiculeGPSTrackerViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vehiculeGPSTrackerController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVehiculeGPSTrackerLabel_dateDebut}"/>
+                        <h:outputText value="#{vehiculeGPSTrackerController.selected.dateDebut}" title="#{bundle.ViewVehiculeGPSTrackerTitle_dateDebut}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewVehiculeGPSTrackerLabel_dateFin}"/>
+                        <h:outputText value="#{vehiculeGPSTrackerController.selected.dateFin}" title="#{bundle.ViewVehiculeGPSTrackerTitle_dateFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewVehiculeGPSTrackerLabel_vehicule}"/>
+                        <h:outputText value="#{vehiculeGPSTrackerController.selected.vehicule}" title="#{bundle.ViewVehiculeGPSTrackerTitle_vehicule}"/>
+                        <h:outputText value="#{bundle.ViewVehiculeGPSTrackerLabel_GPSTracker}"/>
+                        <h:outputText value="#{vehiculeGPSTrackerController.selected.GPSTracker}" title="#{bundle.ViewVehiculeGPSTrackerTitle_GPSTracker}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VehiculeGPSTrackerViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
